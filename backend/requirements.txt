@@ -4,3 +4,8 @@ djangorestframework-simplejwt
 psycopg2-binary
 Pillow
 python-dotenv
+requests
+django-cors-headers
+django-filter
+python-decouple
+drf-spectacular
