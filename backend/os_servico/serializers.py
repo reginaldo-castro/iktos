@@ -75,7 +75,7 @@ class OrdemServicoDetailSerializer(serializers.ModelSerializer):
 class OrdemServicoChecklistUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrdemServicoChecklist   
-        fields = ['concluido']
+        fields = ['id', 'concluido']
         
     def validate(self, attrs):
         ordem_servico = self.instance.ordem_servico
@@ -89,8 +89,8 @@ class OrdemServicoChecklistUpdateSerializer(serializers.ModelSerializer):
         
 
 class OrdemServicoChecklistDetalheSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(source='checklist_item.id')
-    descricao = serializers.CharField(source='checklist_item.descricao')
+    #id = serializers.IntegerField(source='checklist_item.id')
+    descricao = serializers.CharField(source='checklist_item.descricao', read_only=True)
 
     class Meta:
         model = OrdemServicoChecklist
@@ -98,6 +98,7 @@ class OrdemServicoChecklistDetalheSerializer(serializers.ModelSerializer):
 
 
 class OrdemServicoDetalheSerializer(serializers.ModelSerializer):
+    foto = serializers.ImageField(use_url=True)
     checklist = OrdemServicoChecklistDetalheSerializer(
         source='checklist_itens',
         many=True,
