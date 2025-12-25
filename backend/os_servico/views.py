@@ -27,7 +27,7 @@ class OrdemServicoViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['get'], url_path='detalhe')
     def detalhe(self, request, pk=None):
         ordem_servico = self.get_object()
-        serializer = OrdemServicoDetalheSerializer(ordem_servico)
+        serializer = OrdemServicoDetalheSerializer(ordem_servico, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     @action(detail=True, methods=['post'])
@@ -36,17 +36,14 @@ class OrdemServicoViewSet(viewsets.ModelViewSet):
 
         if ordem.status == 'concluida':
             raise ValidationError("Ordem de serviço já está concluída.")
+        
+        foto = request.FILES.get('foto')
 
-        checklist_pendentes = ordem.checklist_itens.filter(concluido=False).exists()
-        if checklist_pendentes:
-            raise ValidationError(
-                "Todos os itens do checklist devem estar concluídos."
-            )
+        if not ordem.foto and not foto:
+            raise ValidationError("É obrigatório enviar uma foto para concluir a OS.")
 
-        if not ordem.foto:
-            raise ValidationError(
-                "É obrigatório enviar uma foto para concluir a OS."
-            )
+        if foto:
+            ordem.foto = foto
 
         ordem.status = 'concluida'
         ordem.save()
@@ -54,9 +51,9 @@ class OrdemServicoViewSet(viewsets.ModelViewSet):
         return Response(
             {"detail": "Ordem de serviço concluída com sucesso."},
             status=status.HTTP_200_OK
-        )
-    
-    
+        )    
+
+
 class OrdemServicoChecklistViewSet(viewsets.ModelViewSet):
     serializer_class = OrdemServicoChecklistUpdateSerializer
     permission_classes = [permissions.IsAuthenticated]
