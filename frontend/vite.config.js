@@ -1,13 +1,25 @@
+import { fileURLToPath, URL } from 'node:url'
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    vueDevTools(),
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+  },
   server: {
-    host: '0.0.0.0', // Necessário para o Docker mapear a porta corretamente
+    host: '0.0.0.0',  
     port: 5173,
     watch: {
-      usePolling: true // Melhora o Hot Reload dentro de volumes Docker no Windows/Mac
+      usePolling: true
     }
   }
 })
