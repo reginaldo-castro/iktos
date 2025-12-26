@@ -5,6 +5,8 @@ from .models import OrdemServico, ChecklistItem, OrdemServicoChecklist
 @admin.register(OrdemServico)
 class OrdemServicoAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'status')
+    fields = ('cliente', 'descricao', 'foto', 'status')
+    readonly_fields = ('created_at', 'updated_at')
     list_filter = ('status',)
     search_fields = ('descricao',)
 
