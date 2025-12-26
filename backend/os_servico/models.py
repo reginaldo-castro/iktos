@@ -18,10 +18,12 @@ class OrdemServico(models.Model):
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True,
         related_name='ordens_servico'
     )
-
+    cliente = models.CharField(verbose_name="Nome do cliente", max_length=120, unique=True)
     descricao = models.TextField(verbose_name='Descrição da atividade')
 
     foto = models.ImageField(
@@ -44,7 +46,17 @@ class OrdemServico(models.Model):
     def __str__(self):
         return f'OS #{self.id}'
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
+        itens_globais = ChecklistItem.objects.all()
+        
+        for item in itens_globais:
+            OrdemServicoChecklist.objects.get_or_create(
+                ordem_servico=self,
+                checklist_item=item
+            )
+            
 class OrdemServicoChecklist(models.Model):
     ordem_servico = models.ForeignKey(
         OrdemServico,
