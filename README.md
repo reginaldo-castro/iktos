@@ -19,21 +19,22 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
 ## 🗂️ Estrutura do Projeto
 
 ```text
-.
-├── backend                 # API Django e Lógica de Negócio
-│   ├── core/               # Configurações do projeto
-│   ├── os_servico/         # App de Ordens de Serviço (Modelos, Views, Actions)
-│   ├── users/              # Gerenciamento de usuários e permissões
-│   └── manage.py
-├── frontend                # Interface React / Vite
-│   ├── src/                # Componentes e Páginas
-│   └── vite.config.js
-├── infra                   # Orquestração de containers
-│   └── docker-compose.yml
-└── README.md
+    .
+    ├── backend                 # API Django e Lógica de Negócio
+    │   ├── core/               # Configurações do projeto
+    │   ├── os_servico/         # App de Ordens de Serviço (Modelos, Views, Actions)
+    │   ├── users/              # Gerenciamento de usuários e permissões
+    │   └── manage.py
+    ├── frontend                # Interface React / Vite
+    │   ├── src/                # Componentes e Páginas
+    │   └── vite.config.js
+    ├── infra                   # Orquestração de containers
+    │   └── docker-compose.yml
+    └── README.md
+```
 
 ## ⚙️ Configuração e Execução
-    
+
     O projeto está totalmente dockerizado para facilitar o desenvolvimento.
 
 1. **Clone o repositório:**
