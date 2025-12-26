@@ -43,12 +43,14 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
     cd iktos
     ```
 2. **Suba o ambiente completo (Backend, Frontend e DB):**
+    ```bash
     cd infra
     docker-compose up --build
-
-## 🔐 Autenticação e Acesso
     ```
-    O sistema utiliza autenticação via Token. Conforme as regras de negócio:
+    
+## 🔐 Autenticação e Acesso
+    ```bash
+        O sistema utiliza autenticação via Token. Conforme as regras de negócio:
         Token Expirado: Quando o token de acesso expira, 
         o sistema redireciona o usuário automaticamente para a tela de login.
     ```
