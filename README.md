@@ -67,8 +67,6 @@ Esta seção é destinada a administradores para a gestão de dados mestres do s
 * **Painel Administrativo**: [http://localhost:8000/admin/](http://localhost:8000/admin/)
     * Utilizado para gerenciar **Checklists** e configurações globais.
     * **Cadastrar usuários**: Criação e gestão de técnicos e permissões.
-* **Navegação na API**: [http://localhost:8000/api/v1/](http://localhost:8000/api/v1/)
-    * Acesso direto aos endpoints para consulta rápida.
 
 ### Fluxo de Cadastro
 Para o funcionamento correto do sistema, o administrador deve:
