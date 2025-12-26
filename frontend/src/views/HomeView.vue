@@ -10,7 +10,7 @@
           <h3>OS #{{ os.id }} - {{ os.descricao }}</h3>
           <span class="status-dot"></span>
         </div>
-        <!-- <p><strong>Cliente:</strong> {{ os.cliente }}</p> -->
+        <p><strong>Cliente:</strong> {{ os.cliente }}</p>
         <p><strong>Status:</strong> <span :class="os.status">{{ os.status }}</span></p>
         <button @click="$router.push(`/ordens-servico/${os.id}`)" class="btn-detalhes">
           Ver Detalhes
