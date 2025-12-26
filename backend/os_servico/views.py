@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -19,8 +21,18 @@ class OrdemServicoViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return OrdemServico.objects.filter(user=self.request.user)
+        user = self.request.user
     
+        if not user.is_authenticated:
+            return OrdemServico.objects.none()
+
+        if user.perfil == 'admin':
+            return OrdemServico.objects.all()
+    
+        return OrdemServico.objects.filter(
+            Q(status__iexact='aberto') | Q(user=user)
+        )
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
         
@@ -51,7 +63,20 @@ class OrdemServicoViewSet(viewsets.ModelViewSet):
         return Response(
             {"detail": "Ordem de serviço concluída com sucesso."},
             status=status.HTTP_200_OK
-        )    
+        )
+        
+    @action(detail=True, methods=['post'])
+    def assumir(self, request, pk=None):
+        ordem = self.get_object()
+        
+        if ordem.status != 'aberto':
+            return Response({"detail": "Esta OS já foi pega ou concluída."}, status=400)
+        
+        ordem.user = request.user
+        ordem.status = 'em_andamento'
+        ordem.save()
+        
+        return Response({"detail": "Você assumiu a OS com sucesso!"})
 
 
 class OrdemServicoChecklistViewSet(viewsets.ModelViewSet):
