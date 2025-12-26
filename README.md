@@ -37,28 +37,30 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
 
     O projeto está totalmente dockerizado para facilitar o desenvolvimento.
 
-1. **Clone o repositório:**
-   ```bash
-    git clone git@github.com:reginaldo-castro/iktos.git
-    cd iktos
-    ```
-2. **Suba o ambiente completo (Backend, Frontend e DB):**
+    1. **Clone o repositório:**
     ```bash
-    cd infra
-    docker-compose up --build
-    ```
-    
+        git clone git@github.com:reginaldo-castro/iktos.git
+        cd iktos
+        ```
+    2. **Suba o ambiente completo (Backend, Frontend e DB):**
+        ```bash
+        docker compose -f infra/docker-compose.yml up --build
+        ```
+
 ## 🔐 Autenticação e Acesso
     ```bash
         O sistema utiliza autenticação via Token. Conforme as regras de negócio:
         Token Expirado: Quando o token de acesso expira, 
         o sistema redireciona o usuário automaticamente para a tela de login.
     ```
-    Criar Superusuário (Backend)
 
-    docker-compose exec backend python manage.py createsuperuser
+## Criar Superusuário (Backend)
+    ```bash
+        docker exec -it os_backend(nome_do_container) python manage.py createsuperuser
+        nome_do_container pode usar o docker ps para visualizar o nome
+    ```
 
 ## 🗑️ Parar os containers
     ```
-    docker-compose down
+    docker compose -f infra/docker-compose.yml down
     ``
