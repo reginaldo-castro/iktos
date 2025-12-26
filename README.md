@@ -80,3 +80,16 @@ Para o funcionamento correto do sistema, o administrador deve:
 ```
     docker compose -f infra/docker-compose.yml down
 ```
+
+---
+
+## 👤 Autor
+
+Desenvolvido por **Reginaldo Castro**.
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/reginaldo-castro)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/reginaldo-rc-castro/)
+
+---
+
+> Este é um prototipo inicial usando as soluções Full Stack. Sinta-se à vontade para entrar em contato!
