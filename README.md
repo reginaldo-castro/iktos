@@ -60,6 +60,22 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
     nome_do_container pode usar o docker ps para visualizar o nome
 ```
 
+## 🛠️ Administração e Acesso Direto
+
+Esta seção é destinada a administradores para a gestão de dados mestres do sistema.
+
+* **Painel Administrativo**: [http://localhost:8000/admin/](http://localhost:8000/admin/)
+    * Utilizado para gerenciar **Checklists** e configurações globais.
+    * **Cadastrar usuários**: Criação e gestão de técnicos e permissões.
+* **Navegação na API**: [http://localhost:8000/api/v1/](http://localhost:8000/api/v1/)
+    * Acesso direto aos endpoints para consulta rápida.
+
+### Fluxo de Cadastro
+Para o funcionamento correto do sistema, o administrador deve:
+1.  **Cadastrar Técnicos**: Criar os usuários que utilizarão o sistema.
+2.  **Configurar Checklists**: Definir os itens de verificação para as OS.
+3.  **Cadastrar Ordens de Serviço**: Iniciar o fluxo de trabalho para os técnicos.
+
 ## 🗑️ Parar os containers
 ```
     docker compose -f infra/docker-compose.yml down
