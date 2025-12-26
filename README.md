@@ -63,4 +63,4 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
 ## 🗑️ Parar os containers
 ```
     docker compose -f infra/docker-compose.yml down
-```
+``
