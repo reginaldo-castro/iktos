@@ -53,7 +53,7 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
     Token Expirado: Quando o token de acesso expira, 
     o sistema redireciona o usuário automaticamente para a tela de login.
 ```
-"
+
 ## Criar Superusuário (Backend)
 ```bash
     docker exec -it os_backend(nome_do_container) python manage.py createsuperuser
@@ -63,4 +63,4 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
 ## 🗑️ Parar os containers
 ```
     docker compose -f infra/docker-compose.yml down
-``
+```
