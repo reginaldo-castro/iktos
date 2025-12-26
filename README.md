@@ -37,15 +37,15 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
 
     O projeto está totalmente dockerizado para facilitar o desenvolvimento.
 
-    1. **Clone o repositório:**
+1. **Clone o repositório:**
+   ```bash
+    git clone git@github.com:reginaldo-castro/iktos.git
+    cd iktos
+    ```
+2. **Suba o ambiente completo (Backend, Frontend e DB):**
     ```bash
-        git clone git@github.com:reginaldo-castro/iktos.git
-        cd iktos
-        ```
-    2. **Suba o ambiente completo (Backend, Frontend e DB):**
-        ```bash
-        docker compose -f infra/docker-compose.yml up --build
-        ```
+       docker compose -f infra/docker-compose.yml up --build
+    ```
 
 ## 🔐 Autenticação e Acesso
     ```bash
