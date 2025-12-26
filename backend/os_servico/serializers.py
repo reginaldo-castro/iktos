@@ -20,7 +20,7 @@ class OrdemServicoSerializer(serializers.ModelSerializer):
   
     class Meta:
         model = OrdemServico
-        fields = ['id', 'descricao', 'foto', 'status']
+        fields = ['id', 'descricao', 'cliente', 'foto', 'status']
         read_only_fields = ['id', 'created_at', 'updated_at']
         
     def create(self, validated_data):
@@ -29,6 +29,7 @@ class OrdemServicoSerializer(serializers.ModelSerializer):
         ordem_servico = OrdemServico.objects.create(
             user = usuario,
             descricao=validated_data.get('descricao'),
+            cliente=validated_data.get('cliente'),
             foto=validated_data.get('foto'),
             status=validated_data.get('status', 'aberto'),
         )
@@ -110,6 +111,7 @@ class OrdemServicoDetalheSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'descricao',
+            'cliente',
             'status',
             'foto',
             'checklist'
