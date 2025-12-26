@@ -48,8 +48,8 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
     ```
 
 ## 🔐 Autenticação e Acesso
-  ```bash
-    O sistema utiliza autenticação via Token. Conforme as regras de negócio:
+```bash
+    O sistema utiliza autenticação via Token.
     Token Expirado: Quando o token de acesso expira, 
     o sistema redireciona o usuário automaticamente para a tela de login.
 ```
@@ -63,4 +63,4 @@ Solução Full Stack para gerenciamento de ordens de serviço, composta por uma 
 ## 🗑️ Parar os containers
 ```
     docker compose -f infra/docker-compose.yml down
-``
+```
